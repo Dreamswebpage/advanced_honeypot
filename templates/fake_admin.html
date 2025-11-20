@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+    <h2>Admin Dashboard</h2>
+    <p class="subtitle">Summary overview</p>
+
+    <div class="stats">
+        <div class="stat">
+            <span class="label">Total Users</span>
+            <span class="value">{{ stats.total_users }}</span>
+        </div>
+        <div class="stat">
+            <span class="label">Monthly Revenue</span>
+            <span class="value">{{ stats.monthly_revenue }}</span>
+        </div>
+        <div class="stat">
+            <span class="label">Pending Tickets</span>
+            <span class="value">{{ stats.pending_tickets }}</span>
+        </div>
+    </div>
+
+    <p class="muted">
+        (Ye sab fake numbers hain, sirf attacker ko confuse karne ke liye.)
+    </p>
+</div>
+{% endblock %}

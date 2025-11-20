@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card wide">
+    <h2>Captured Requests</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Time (UTC)</th>
+            <th>IP</th>
+            <th>Method</th>
+            <th>Path</th>
+            <th>User-Agent</th>
+            <th>Referer</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for r in requests %}
+            <tr>
+                <td>{{ r.timestamp }}</td>
+                <td>{{ r.ip }}</td>
+                <td>{{ r.method }}</td>
+                <td>{{ r.path }}</td>
+                <td>{{ r.user_agent }}</td>
+                <td>{{ r.referer }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div class="card wide">
+    <h2>Captured Credentials</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Time (UTC)</th>
+            <th>IP</th>
+            <th>Username</th>
+            <th>Password</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for c in creds %}
+            <tr>
+                <td>{{ c.timestamp }}</td>
+                <td>{{ c.ip }}</td>
+                <td>{{ c.username }}</td>
+                <td>{{ c.password }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<p class="muted">
+    Note: Ye sirf research / security monitoring ke liye hai. Production me use karne se pehle legal aur
+    policy aspects clear karna zaroori hai.
+</p>
+
+<a href="{{ url_for('admin_logout') }}" class="btn-secondary">Logout</a>
+{% endblock %}
